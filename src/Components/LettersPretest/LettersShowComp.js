@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from "react";
+import React, { useState,useRef} from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import SpeechRecognitionsComp from "../SpeechRecognitionComp/SpeechRecognitions";
 import PopUpcomp from "../Popups.js/Popups";
@@ -7,8 +7,7 @@ import "./LettersShowComp.css";
 import { useNavigate } from "react-router-dom";
 
 const LetterShowComp=()=>{
-    const [lettersShow,SetLettersShow] = useState("");
-    const [IsDisabled,SetDisabled] = useState(""); 
+    const [lettersShow,SetLettersShow] = useState(""); 
     const [lettersSpelled,SetLettersSpeeled] = useState("");
     const [IsMicrophonPopUp,SetMicrophonePopUp] = useState(false);
     const [isInputConfirmed,SetInputConfirmed] = useState(false);
@@ -17,7 +16,7 @@ const LetterShowComp=()=>{
     const [isStartButton,SetStartButton] = useState({visibility:"visible"});
     //const [isResultPopup,SetIsResultpopup] = useState(false);
     const [ResultPopupDisplay,SetResultPopupDisplay] = useState({visibility:"hidden"});
-    const [NavigateNextTest,SetNavigateNextTest] = useState(false);
+    //const [NavigateNextTest,SetNavigateNextTest] = useState(false);
     const [Ltters,SetLetters]=useState([]);
     const countRef = useRef(0);
     const {speak} = useSpeechSynthesis();
@@ -72,8 +71,7 @@ const LetterShowComp=()=>{
             console.log(found);
            
         }else{
-            SetNavigateNextTest(true);
-            console.log("Your Test is Finished")
+            nav("/Sentencetest/" + username);
         };
         
     };
@@ -129,13 +127,9 @@ const LetterShowComp=()=>{
     };
     //End Microphone Popup
 
-    if (NavigateNextTest) {
+    
         
-        setInterval(() => {
-            nav("/Sentencetest/" + username);
-         }, 2000);
         
-    };
     
     return(
         <div className="LettersShow" >
@@ -163,7 +157,7 @@ const LetterShowComp=()=>{
                 </div></ul>
             </div>
             <div className="MicroPhoneContainer">
-                <button className="Microphone" onClick={RecordingPopup} disabled={IsDisabled}><i className="fas fa-microphone" ></i></button>
+                <button className="Microphone" onClick={RecordingPopup}><i className="fas fa-microphone" ></i></button>
             </div>
         </div>
     );
