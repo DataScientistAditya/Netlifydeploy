@@ -137,9 +137,8 @@ const LetterShowComp=()=>{
                 <ResultPopUpComp   Prons={lettersSpelled.toUpperCase()} TextShow={lettersShow} score={countRef.current} TillNow={Ltters.length} Nextletter={NextClicked}></ResultPopUpComp>
             </div>
             <div className="StartScreen" style={isStartButton}>
-                <p style={{color:"green",fontSize:"12px"}}>Note:You will be showned 11 letters back to back with span of 30 secs,</p>
-                <p style={{color:"green",fontSize:"12px"}}>out of 11, first one will be a dummy one where score will not be counted.</p>
-                <p style={{color:"green",fontSize:"12px"}}>based on your pronunciation for rest of the 10 letters you will have a score.</p>
+                <p style={{color:"white",fontSize:"12px"}}>Note:You will be showned 11 letters back to back with span of 30 secs,</p>
+                <p style={{color:"white",fontSize:"12px"}}>out of 11, first one will be a dummy one where score will not be counted.</p>
                 
                 <p>Please click on the button to start the test</p>
                 <button onClick={AssigningLetters} >Start</button>
