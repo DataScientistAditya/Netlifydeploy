@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useRef} from "react";
+import React, { useState ,useRef} from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 import SpeechRecognitionsComp from "../SpeechRecognitionComp/SpeechRecognitions";
 import PopUpcomp from "../Popups.js/Popups";
@@ -53,8 +53,6 @@ const SentencesShowComp=()=>{
         };
     };
 
-
-    let Score =0;
     function PassAudioText(data){
         SetDisplayPopUp({visibility:"visible"});
         if (isInputConfirmed) {
@@ -121,11 +119,11 @@ const SentencesShowComp=()=>{
   
     
     return(
-        <div className="LettersShow" >
-            <div className="PopUpResult" style={ResultPopupDisplay}>
+        <div className="SentencesShow" >
+            <div className="SentencePopUpResult" style={ResultPopupDisplay}>
                 <ResultPopUpComp score={countRef.current} TillNow={DispalySentences.length} Nextletter={NextClicked}></ResultPopUpComp>
             </div>
-            <div className="StartScreen" style={isStartButton}>
+            <div className="SentencesStartScreen" style={isStartButton}>
                 <p style={{color:"green",fontSize:"12px"}}>Note:You will be showned 6 Sentences back to back,</p>
                 <p style={{color:"green",fontSize:"12px"}}>out of 6, first one will be a dummy one where score will not be counted.</p>
                 <p style={{color:"green",fontSize:"12px"}}>based on your pronunciation for rest of the 5 Sentences you will have a score.</p>
@@ -133,20 +131,20 @@ const SentencesShowComp=()=>{
                 <p>Please click on the button to start the test</p>
                 <button onClick={AssigningLetters} >Start</button>
             </div>
-            <div className="Speechcontainer" style={isSpeech}>
+            <div className="SentencesSpeechcontainer" style={isSpeech}>
                 <PopUpcomp YesClicked={InputConfirmed} NoClicked={InputCanceled} Display={isPopUpDisplay}> </PopUpcomp>
                 {RecordingPopUps}
             </div>
             <p>Read Sentence as Apeared Below using Microphone</p>
-            <div className="lettercontainer">
+            <div className="Sentencescontainer">
                 
-                <ul className="lettersUl"><div className="letters"><p style={{fontSize:"18px",fontFamily:"sans-serif"}}>{SentenceShow}</p></div></ul>
-                <ul className="speakerul"><div className="SpeakerContainer">
+                <ul className="SentencessUl"><div className="Sentences"><p style={{fontSize:"18px",fontFamily:"sans-serif"}}>{SentenceShow}</p></div></ul>
+                <ul className="Sentencespeakerul"><div className="SentenceSpeakerContainer">
                 <button onClick={()=>speak({text:SentenceShow })} className="SpeakerButtonbtn"><i className="fas fa-volume-up"></i></button>
                 </div></ul>
             </div>
-            <div className="MicroPhoneContainer">
-                <button className="Microphone" onClick={RecordingPopup} ><i className="fas fa-microphone" ></i></button>
+            <div className="SentenceMicroPhoneContainer">
+                <button className="SentenceMicrophone" onClick={RecordingPopup} ><i className="fas fa-microphone" ></i></button>
             </div>
         </div>
     );
